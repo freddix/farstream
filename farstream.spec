@@ -18,10 +18,6 @@ BuildRequires:	gupnp-igd-devel
 BuildRequires:	libnice-devel
 BuildRequires:	libtool
 BuildRequires:	pkg-config
-BuildRequires:	python-devel
-BuildRequires:	python-gstreamer-devel
-BuildRequires:	python-pygobject-devel
-Obsoletes:	farsight2 < 0.0.32
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -48,18 +44,9 @@ Header files for Farstream library.
 Summary:	Farstream API documentation
 Group:		Documentation
 Requires:	gtk-doc-common
-Obsoletes:	farsight2-apidocs < 0.0.32
 
 %description apidocs
 API documentation for Farstream library.
-
-%package -n python-farstream
-Summary:	Farstream Python bindings
-Group:		Libraries/Python
-Requires:	%{name} = %{version}-%{release}
-
-%description -n python-farstream
-Farstream Python bindings.
 
 %prep
 %setup -q
@@ -82,48 +69,42 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/{farstream-0.1,gstreamer-0.10}/*.la
-%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
-%postun	-p /sbin/ldconfig
+%post	-p /usr/sbin/ldconfig
+%postun	-p /usr/sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %ghost %{_libdir}/libfarstream-0.1.so.0
-%attr(755,root,root) %{_libdir}/libfarstream-0.1.so.*.*.*
-%{_libdir}/girepository-1.0/Farstream-0.1.typelib
+%attr(755,root,root) %ghost %{_libdir}/libfarstream-0.2.so.2
+%attr(755,root,root) %{_libdir}/libfarstream-0.2.so.*.*.*
+%{_libdir}/girepository-1.0/Farstream-0.2.typelib
 
-%dir %{_libdir}/farstream-0.1
-%attr(755,root,root) %{_libdir}/farstream-0.1/libmulticast-transmitter.so
-%attr(755,root,root) %{_libdir}/farstream-0.1/libnice-transmitter.so
-%attr(755,root,root) %{_libdir}/farstream-0.1/librawudp-transmitter.so
-%attr(755,root,root) %{_libdir}/farstream-0.1/libshm-transmitter.so
-%attr(755,root,root) %{_libdir}/gstreamer-0.10/libfsfunnel.so
-%attr(755,root,root) %{_libdir}/gstreamer-0.10/libfsmsnconference.so
-%attr(755,root,root) %{_libdir}/gstreamer-0.10/libfsrawconference.so
-%attr(755,root,root) %{_libdir}/gstreamer-0.10/libfsrtcpfilter.so
-%attr(755,root,root) %{_libdir}/gstreamer-0.10/libfsrtpconference.so
-%attr(755,root,root) %{_libdir}/gstreamer-0.10/libfsvideoanyrate.so
+%dir %{_libdir}/farstream-0.2
+%attr(755,root,root) %{_libdir}/farstream-0.2/libmulticast-transmitter.so
+%attr(755,root,root) %{_libdir}/farstream-0.2/libnice-transmitter.so
+%attr(755,root,root) %{_libdir}/farstream-0.2/librawudp-transmitter.so
+%attr(755,root,root) %{_libdir}/farstream-0.2/libshm-transmitter.so
+%attr(755,root,root) %{_libdir}/gstreamer-1.0/libfsmsnconference.so
+%attr(755,root,root) %{_libdir}/gstreamer-1.0/libfsrawconference.so
+%attr(755,root,root) %{_libdir}/gstreamer-1.0/libfsrtcpfilter.so
+%attr(755,root,root) %{_libdir}/gstreamer-1.0/libfsrtpconference.so
+%attr(755,root,root) %{_libdir}/gstreamer-1.0/libfsvideoanyrate.so
 %{_datadir}/farstream
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libfarstream-0.1.so
-%{_datadir}/gir-1.0/Farstream-0.1.gir
-%{_includedir}/farstream-0.1
-%{_pkgconfigdir}/farstream-0.1.pc
+%attr(755,root,root) %{_libdir}/libfarstream-0.2.so
+%{_datadir}/gir-1.0/Farstream-0.2.gir
+%{_includedir}/farstream-0.2
+%{_pkgconfigdir}/farstream-0.2.pc
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/farstream-libs-0.10
-%{_gtkdocdir}/farstream-plugins-0.1
-
-%files -n python-farstream
-%defattr(644,root,root,755)
-%attr(755,root,root) %{py_sitedir}/farstream.so
+%{_gtkdocdir}/farstream-libs-1.0
+%{_gtkdocdir}/farstream-plugins-0.2
 
