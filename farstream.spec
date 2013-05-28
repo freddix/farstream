@@ -2,12 +2,12 @@
 
 Summary:	Audio/Video Communications Framework
 Name:		farstream
-Version:	0.2.2
+Version:	0.2.3
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://freedesktop.org/software/farstream/releases/farstream/%{name}-%{version}.tar.gz
-# Source0-md5:	01c20c1ed014ad4e18e55f1f6caf7877
+# Source0-md5:	a8971167068b69a6933d3eaaeb9ab448
 URL:		http://www.freedesktop.org/wiki/Software/Farstream
 BuildRequires:	autoconf
 BuildRequires:	automake
