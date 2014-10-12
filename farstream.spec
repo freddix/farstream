@@ -2,12 +2,12 @@
 
 Summary:	Audio/Video Communications Framework
 Name:		farstream
-Version:	0.2.4
+Version:	0.2.6
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://freedesktop.org/software/farstream/releases/farstream/%{name}-%{version}.tar.gz
-# Source0-md5:	edcc75cbf7c811cfe3de9b00b9808682
+# Source0-md5:	63cecbb912e7a8b96d4470420327e2cc
 URL:		http://www.freedesktop.org/wiki/Software/Farstream
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -15,7 +15,7 @@ BuildRequires:	gobject-introspection-devel
 BuildRequires:	gstreamer-plugins-base-devel
 BuildRequires:	gtk-doc
 BuildRequires:	gupnp-igd-devel
-BuildRequires:	libnice-devel
+BuildRequires:	libnice-devel >= 0.1.8
 BuildRequires:	libtool
 BuildRequires:	pkg-config
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -91,8 +91,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/farstream-0.2/libshm-transmitter.so
 %attr(755,root,root) %{_libdir}/gstreamer-1.0/libfsmsnconference.so
 %attr(755,root,root) %{_libdir}/gstreamer-1.0/libfsrawconference.so
-%attr(755,root,root) %{_libdir}/gstreamer-1.0/libfsrtcpfilter.so
 %attr(755,root,root) %{_libdir}/gstreamer-1.0/libfsrtpconference.so
+%attr(755,root,root) %{_libdir}/gstreamer-1.0/libfsrtpxdata.so
 %attr(755,root,root) %{_libdir}/gstreamer-1.0/libfsvideoanyrate.so
 %{_datadir}/farstream
 
